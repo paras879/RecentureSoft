@@ -1,87 +1,67 @@
-
-
+"use client";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // ── High Performance SVG Graphics for Services ──
 
-function SoftwareDevGraphic() {
+function SoftwareDevGraphic({ activeSlide = 0 }) {
     return (
         <div className="w-full h-full flex items-center justify-center p-4">
-            <svg viewBox="0 0 200 200" className="w-full h-full max-w-[200px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tech architecture grids */}
-                <rect x="20" y="20" width="45" height="35" rx="6" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5" />
-                <rect x="20" y="80" width="45" height="35" rx="6" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5" />
-                <rect x="20" y="140" width="45" height="35" rx="6" fill="#0f172a" stroke="#06b6d4" strokeWidth="1.5" />
-                
-                <rect x="135" y="50" width="45" height="40" rx="6" fill="#0f172a" stroke="#6366f1" strokeWidth="1.5" />
-                <rect x="135" y="110" width="45" height="40" rx="6" fill="#0f172a" stroke="#6366f1" strokeWidth="1.5" />
-
-                {/* Database cylinders / nodes */}
-                <circle cx="42.5" cy="37.5" r="4" fill="#06b6d4" />
-                <circle cx="42.5" cy="97.5" r="4" fill="#06b6d4" />
-                <circle cx="42.5" cy="157.5" r="4" fill="#06b6d4" />
-
-                {/* Connecting lines */}
-                <path d="M 65 37.5 L 100 37.5 L 100 70 L 135 70" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
-                <path d="M 65 97.5 L 135 70" stroke="#3b82f6" strokeWidth="1.5" />
-                <path d="M 65 157.5 L 100 157.5 L 100 130 L 135 130" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
-                
-                {/* Pulsing travel point */}
-                <circle cx="100" cy="70" r="3.5" fill="#ffffff" className="animate-ping" style={{ animationDuration: '2s' }} />
-            </svg>
+            <div className="relative w-full max-w-[320px] md:max-w-[420px] lg:max-w-[550px] flex flex-col items-center group">
+                <div className="w-full aspect-[16/10] bg-slate-800 rounded-t-xl md:rounded-t-2xl border-[6px] border-slate-800 shadow-2xl overflow-hidden relative z-10">
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-10 ${activeSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/software-1.png" alt="Software Mockup 1" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top block" />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-20 ${activeSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/software-2.png" alt="Software Mockup 2" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top block" />
+                    </div>
+                </div>
+                {/* Laptop Base */}
+                <div className="w-[115%] h-3 md:h-4 bg-slate-300 dark:bg-slate-700 rounded-b-xl md:rounded-b-2xl shadow-xl relative z-20 border-t border-slate-400 dark:border-slate-600 flex justify-center">
+                    <div className="w-1/4 h-1 md:h-1.5 bg-slate-400 dark:bg-slate-500 rounded-b-md" />
+                </div>
+            </div>
         </div>
     );
 }
 
-function WebDevGraphic() {
+function WebDevGraphic({ activeSlide = 0 }) {
     return (
         <div className="w-full h-full flex items-center justify-center p-4">
-            <svg viewBox="0 0 200 200" className="w-full h-full max-w-[200px] hover:translate-y-[-4px] transition-transform duration-500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Browser Mockup */}
-                <rect x="15" y="30" width="170" height="130" rx="10" fill="#0f172a" stroke="#3b82f6" strokeWidth="1.5" />
-                {/* Browser header */}
-                <path d="M 15 50 L 185 50" stroke="#3b82f6" strokeWidth="1.5" />
-                {/* Dots */}
-                <circle cx="28" cy="40" r="3" fill="#ef4444" />
-                <circle cx="38" cy="40" r="3" fill="#eab308" />
-                <circle cx="48" cy="40" r="3" fill="#22c55e" />
-                {/* Search bar */}
-                <rect x="65" y="36" width="90" height="8" rx="4" fill="rgba(255,255,255,0.08)" />
-
-                {/* Content grid */}
-                <rect x="30" y="65" width="40" height="40" rx="4" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" strokeWidth="1" />
-                <rect x="80" y="65" width="90" height="8" rx="2" fill="rgba(255,255,255,0.15)" />
-                <rect x="80" y="80" width="70" height="6" rx="2" fill="rgba(255,255,255,0.08)" />
-                
-                <rect x="30" y="115" width="140" height="30" rx="4" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" strokeWidth="1" />
-                <circle cx="50" cy="130" r="8" fill="#6366f1" opacity="0.6" />
-                <rect x="70" y="127" width="80" height="6" rx="2" fill="rgba(255,255,255,0.15)" />
-            </svg>
+            <div className="relative w-full max-w-[320px] md:max-w-[420px] lg:max-w-[550px] flex flex-col items-center group">
+                <div className="w-full aspect-[16/10] bg-slate-800 rounded-t-xl md:rounded-t-2xl border-[6px] border-slate-800 shadow-2xl overflow-hidden relative z-10">
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-10 ${activeSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/desktop-mockup.png" alt="Desktop Mockup 1" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top block" />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-20 ${activeSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/desktop-mockup-1.png" alt="Desktop Mockup 2" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top block" />
+                    </div>
+                </div>
+                {/* Laptop Base */}
+                <div className="w-[115%] h-3 md:h-4 bg-slate-300 dark:bg-slate-700 rounded-b-xl md:rounded-b-2xl shadow-xl relative z-20 border-t border-slate-400 dark:border-slate-600 flex justify-center">
+                    <div className="w-1/4 h-1 md:h-1.5 bg-slate-400 dark:bg-slate-500 rounded-b-md" />
+                </div>
+            </div>
         </div>
     );
 }
 
-function MobileAppGraphic() {
+function MobileAppGraphic({ activeSlide = 0 }) {
     return (
         <div className="w-full h-full flex items-center justify-center p-4">
-            <svg viewBox="0 0 200 200" className="w-full h-full max-w-[200px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Phone mockup */}
-                <rect x="50" y="20" width="100" height="160" rx="16" fill="#0f172a" stroke="#8b5cf6" strokeWidth="1.8" />
-                {/* Speaker */}
-                <line x1="90" y1="30" x2="110" y2="30" stroke="#8b5cf6" strokeWidth="1.5" strokeLinecap="round" />
+            <div className="relative w-[110px] md:w-[130px] aspect-[9/19] bg-slate-900 rounded-[2rem] border-[6px] md:border-[8px] border-slate-900 shadow-2xl overflow-hidden group">
+                {/* iPhone Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[45%] h-4 md:h-5 bg-slate-900 rounded-b-xl z-20" />
                 
-                {/* Screen widgets */}
-                <rect x="62" y="45" width="76" height="36" rx="8" fill="rgba(139, 92, 246, 0.15)" stroke="#a855f7" strokeWidth="1" />
-                <circle cx="78" cy="63" r="8" fill="#a855f7" />
-                <rect x="94" y="60" width="36" height="6" rx="2" fill="rgba(255,255,255,0.15)" />
-
-                <rect x="62" y="92" width="34" height="34" rx="6" fill="rgba(255,255,255,0.05)" />
-                <rect x="104" y="92" width="34" height="34" rx="6" fill="rgba(255,255,255,0.05)" />
-                
-                <rect x="62" y="136" width="76" height="28" rx="6" fill="rgba(99, 102, 241, 0.15)" stroke="#6366f1" strokeWidth="1" />
-                
-                {/* Pulse node */}
-                <circle cx="100" cy="150" r="3" fill="#ffffff" className="animate-ping" />
-            </svg>
+                <div className="w-full h-full relative z-10">
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-10 ${activeSlide === 0 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/mobile-mockup.png" alt="Mobile Mockup 1" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover object-top block" />
+                    </div>
+                    <div className={`absolute inset-0 transition-opacity duration-700 ease-in-out z-20 ${activeSlide === 1 ? 'opacity-100' : 'opacity-0'}`}>
+                        <Image src="/mobile-mockup-1.png" alt="Mobile Mockup 2" fill sizes="(max-width: 768px) 100vw, 30vw" className="object-cover object-top block" />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
@@ -89,33 +69,17 @@ function MobileAppGraphic() {
 function DigitalMarketingGraphic() {
     return (
         <div className="w-full h-full flex items-center justify-center p-4">
-            <svg viewBox="0 0 200 200" className="w-full h-full max-w-[200px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Chart grids */}
-                <path d="M 20 160 L 180 160" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
-                <path d="M 20 120 L 180 120" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-                <path d="M 20 80 L 180 80" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-                <path d="M 20 40 L 180 40" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-
-                {/* Graph Analytics path */}
-                <path d="M 20 130 Q 55 90, 80 110 T 140 50 T 180 30" stroke="url(#marketing-grad)" strokeWidth="3" strokeLinecap="round" className="animate-pulse" />
-                
-                {/* Highlighted circles */}
-                <circle cx="80" cy="110" r="4.5" fill="#14b8a6" stroke="#ffffff" strokeWidth="1" />
-                <circle cx="140" cy="50" r="4.5" fill="#06b6d4" stroke="#ffffff" strokeWidth="1" />
-
-                {/* Bars */}
-                <rect x="35" y="105" width="10" height="55" rx="2" fill="rgba(20, 184, 166, 0.15)" />
-                <rect x="95" y="85" width="10" height="75" rx="2" fill="rgba(20, 184, 166, 0.15)" />
-                <rect x="155" y="65" width="10" height="95" rx="2" fill="rgba(6, 182, 212, 0.25)" />
-
-                <defs>
-                    <linearGradient id="marketing-grad" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#14b8a6" />
-                        <stop offset="0.5" stopColor="#06b6d4" />
-                        <stop offset="1" stopColor="#3b82f6" />
-                    </linearGradient>
-                </defs>
-            </svg>
+            <div className="relative w-full max-w-[320px] md:max-w-[420px] flex flex-col items-center group">
+                <div className="w-full aspect-[16/10] bg-slate-800 rounded-t-xl md:rounded-t-2xl border-[6px] border-slate-800 shadow-2xl overflow-hidden relative z-10">
+                    <div className="absolute inset-0 z-10">
+                        <Image src="/marketing.png" alt="Marketing Mockup" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top block" />
+                    </div>
+                </div>
+                {/* Laptop Base */}
+                <div className="w-[115%] h-3 md:h-4 bg-slate-300 dark:bg-slate-700 rounded-b-xl md:rounded-b-2xl shadow-xl relative z-20 border-t border-slate-400 dark:border-slate-600 flex justify-center">
+                    <div className="w-1/4 h-1 md:h-1.5 bg-slate-400 dark:bg-slate-500 rounded-b-md" />
+                </div>
+            </div>
         </div>
     );
 }
@@ -123,101 +87,106 @@ function DigitalMarketingGraphic() {
 const services = [
     {
         category: "Enterprise Engineering",
-        title: "Software Development",
-        desc: "We engineer scalable, secure, and blazing fast enterprise software solutions that power billion-dollar workflows.",
-        tags: ["Architecture", "Cloud Native", "APIs", "Microservices"],
+        title: "Software & Dashboards",
+        desc: "Bespoke admin panels, CRM systems, and business intelligence dashboards designed to streamline your daily operations.",
+        tags: ["Dashboards", "CRM", "Portals", "React"],
         Scene: SoftwareDevGraphic,
         colSpan: "lg:col-span-7",
         color: "cyan",
         accent: "from-cyan-500/20 to-blue-500/20"
     },
     {
-        category: "Digital Experience",
-        title: "Web Platforms",
-        desc: "Next-generation web applications built with modern frameworks. Responsive, accessible, and highly optimized.",
-        tags: ["React", "Next.js", "Performance", "SSR"],
-        Scene: WebDevGraphic,
+        category: "Growth Intelligence",
+        title: "Digital Marketing & SEO",
+        desc: "Data-driven marketing, SEO optimization, and high-conversion landing pages to scale your business visibility locally and globally.",
+        tags: ["SEO", "Marketing", "Ads", "Conversion"],
+        Scene: DigitalMarketingGraphic,
         colSpan: "lg:col-span-5",
-        color: "blue",
-        accent: "from-blue-500/20 to-indigo-500/20"
+        color: "teal",
+        accent: "from-teal-500/20 to-emerald-500/20"
     },
     {
         category: "Mobile Ecosystem",
-        title: "Native & Cross-Platform",
-        desc: "Mobile experiences that dominate app stores and drive engagement through flawless native and cross-platform architecture.",
-        tags: ["iOS", "Android", "React Native", "Flutter"],
+        title: "Mobile-First Booking Apps",
+        desc: "Flawless mobile experiences that allow customers to easily book services, check availability, and interact with your business seamlessly on the go.",
+        tags: ["Mobile First", "Cross-Platform", "UX/UI Design", "Web Apps"],
         Scene: MobileAppGraphic,
         colSpan: "lg:col-span-5",
         color: "purple",
         accent: "from-purple-500/20 to-fuchsia-500/20"
     },
     {
-        category: "Growth Intelligence",
-        title: "Digital Analytics",
-        desc: "Data-driven marketing, analytics dashboards, and growth architecture to scale your enterprise globally.",
-        tags: ["Analytics", "Growth", "SEO", "Conversion"],
-        Scene: DigitalMarketingGraphic,
+        category: "Digital Experience",
+        title: "Custom Web Platforms",
+        desc: "Tailored web platforms with integrated booking systems. We build responsive, accessible, and highly optimized websites that drive conversions and local growth.",
+        tags: ["E-Commerce", "Booking Systems", "Performance", "Custom UI"],
+        Scene: WebDevGraphic,
         colSpan: "lg:col-span-7",
-        color: "teal",
-        accent: "from-teal-500/20 to-emerald-500/20"
+        color: "blue",
+        accent: "from-blue-500/20 to-indigo-500/20"
     }
 ];
 
-function ServiceCard({ service }) {
-    const gradientColors = {
-        cyan: "rgba(34, 211, 238, 0.2)",
-        blue: "rgba(59, 130, 246, 0.2)",
-        purple: "rgba(139, 92, 246, 0.2)",
-        teal: "rgba(20, 184, 166, 0.2)"
+function ServiceCard({ service, activeSlide }) {
+    // Tailwind classes for dynamic hover shadows
+    const shadowColors = {
+        cyan: "dark:hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.15)] hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.2)]",
+        blue: "dark:hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)] hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.2)]",
+        purple: "dark:hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.15)] hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.2)]",
+        teal: "dark:hover:shadow-[0_0_40px_-10px_rgba(20,184,166,0.15)] hover:shadow-[0_20px_40px_-15px_rgba(20,184,166,0.2)]"
     };
 
     return (
         <div
-            className={`group relative flex flex-col lg:flex-row justify-between overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-slate-50/50 dark:bg-white/[0.015] border border-slate-200 dark:border-white/5 backdrop-blur-2xl p-4 md:p-5 lg:p-8 ${service.colSpan} hover:bg-white dark:hover:bg-white/[0.03] hover:-translate-y-1 transition-all duration-500 shadow-premium dark:shadow-2xl`}
+            className={`group relative flex flex-col lg:flex-row justify-between overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-white/40 dark:bg-white/[0.015] border border-slate-200 dark:border-white/5 backdrop-blur-xl p-4 md:p-5 lg:p-8 ${service.colSpan} hover:bg-white/80 dark:hover:bg-white/[0.03] hover:-translate-y-2 transition-all duration-700 ease-out shadow-sm ${shadowColors[service.color]}`}
         >
-            {/* Spotlight Glow (CSS Radial Gradient) */}
-            <div
-                className="pointer-events-none absolute -inset-px rounded-[1.5rem] md:rounded-[2rem] opacity-0 transition-opacity duration-500 group-hover:opacity-100 hidden lg:block"
-                style={{
-                    background: `radial-gradient(600px circle at 50% 50%, ${gradientColors[service.color]}, transparent 60%)`
-                }}
-            />
-
-            {/* Moving Gradient Border on Hover */}
-            <div className={`pointer-events-none absolute inset-0 rounded-[1.5rem] md:rounded-[2rem] border-[1.5px] border-transparent group-hover:border-slate-300 dark:group-hover:border-white/20 transition-all duration-700 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-20`} />
+            {/* Subtle Gradient Wash */}
+            <div className={`pointer-events-none absolute inset-0 rounded-[1.5rem] md:rounded-[2rem] border-[1.5px] border-transparent group-hover:border-slate-300 dark:group-hover:border-white/20 transition-all duration-700 bg-gradient-to-br ${service.accent} opacity-0 group-hover:opacity-[0.03]`} />
 
             {/* Content Left/Top */}
             <div
-                className="relative z-10 flex flex-col gap-3 w-full lg:w-1/2 justify-center transition-transform duration-500 group-hover:translate-x-1"
+                className="relative z-10 flex flex-col gap-3 w-full lg:w-1/2 justify-center transition-all duration-700 ease-out group-hover:translate-x-2 group-hover:-translate-y-1"
             >
 
-                <h3 className="text-[1.4rem] md:text-[1.8rem] lg:text-[2rem] font-[600] text-slate-900 dark:text-white tracking-[-0.03em] leading-[1.1]">{service.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-[0.95rem] md:text-base leading-7 font-[400] mt-2">{service.desc}</p>
+                <h3 className="text-[1.4rem] md:text-[1.8rem] lg:text-[2rem] font-[600] text-slate-900 dark:text-white tracking-[-0.03em] leading-[1.1] transition-colors duration-500">{service.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-[0.95rem] md:text-base leading-7 font-[400] mt-2 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-500">{service.desc}</p>
 
                 <div className="flex flex-wrap gap-2 mt-4">
                     {service.tags.map((tag, idx) => (
-                        <span key={idx} className="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#020617]/50 border border-slate-200 dark:border-white/10 text-[11px] md:text-xs text-slate-700 dark:text-slate-300 font-[500] tracking-wide">
+                        <span key={idx} className="px-3 py-1.5 rounded-lg bg-white/80 dark:bg-[#020617]/50 border border-slate-200 dark:border-white/10 text-[11px] md:text-xs text-slate-700 dark:text-slate-300 font-[500] tracking-wide group-hover:border-slate-300 dark:group-hover:border-white/20 transition-all duration-500">
                             {tag}
                         </span>
                     ))}
                 </div>
             </div>
 
-            {/* 3D Scene Right/Bottom */}
+            {/* 3D Scene / Mockup Right/Bottom */}
             <div
-                className="relative z-0 h-[180px] md:h-[220px] lg:h-[350px] w-full lg:w-1/2 flex items-center justify-center pointer-events-none mt-6 md:mt-0 transition-transform duration-500 group-hover:scale-105"
+                className="relative z-0 h-[180px] md:h-[220px] lg:h-[350px] w-full lg:w-1/2 flex items-center justify-center pointer-events-none mt-6 md:mt-0 transition-transform duration-700 ease-out group-hover:scale-[1.03] group-hover:-translate-y-2 group-hover:-translate-x-1"
             >
                 {/* Fallback glow behind the 3D model */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity duration-700`} />
-                <service.Scene />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.accent} blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity duration-700`} />
+                <service.Scene activeSlide={activeSlide} />
             </div>
         </div>
     );
 }
 
 export default function EnterpriseServices() {
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveSlide(prev => (prev === 0 ? 1 : 0));
+        }, 4000); // Wait 4s between switches for better viewability
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="font-manrope relative w-full py-[clamp(1.5rem,4vw,4.5rem)] bg-background px-4 md:px-8 lg:px-12 border-t border-slate-200 dark:border-white/5 transition-colors duration-300">
+            <style>{`
+                /* No additional animations needed, standard React transitions handle the crossfade */
+            `}</style>
             <div className="max-w-[1400px] mx-auto flex flex-col gap-[clamp(1.25rem,2.5vw,2rem)]">
 
                 {/* Section Header */}
@@ -237,7 +206,7 @@ export default function EnterpriseServices() {
                 {/* Bento Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-[clamp(1.25rem,2.5vw,2rem)] auto-rows-fr perspective-1000">
                     {services.map((service, idx) => (
-                        <ServiceCard key={idx} service={service} />
+                        <ServiceCard key={idx} service={service} activeSlide={activeSlide} />
                     ))}
                 </div>
             </div>

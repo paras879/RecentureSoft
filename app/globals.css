@@ -63,12 +63,18 @@ html {
   scrollbar-color: #334155 var(--background);
 }
 
+/* OVERRIDE: Disable all massive blur filters globally to eliminate scrolling lag.
+   These filters cause 100% GPU spikes on large elements during scroll. */
+[class*="blur-[80px]"], [class*="blur-[100px]"], [class*="blur-[120px]"], [class*="blur-[130px]"], [class*="blur-[140px]"], [class*="blur-[150px]"], [class*="blur-[160px]"] {
+  filter: none !important;
+  opacity: 0.15 !important; /* Lower opacity so solid shapes don't look too harsh without blur */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Scrollbar - Hostinger-inspired */
@@ -119,16 +125,17 @@ body {
 
 @keyframes gridMove {
   from {
-    background-position: 0 0;
+    transform: translate(0, 0);
   }
 
   to {
-    background-position: 40px 40px;
+    transform: translate(-40px, -40px);
   }
 }
 
 .animate-gridMove {
   animation: gridMove 14s linear infinite;
+  will-change: transform;
 }
 
 /* Holographic ring spin */

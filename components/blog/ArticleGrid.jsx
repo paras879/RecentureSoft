@@ -78,7 +78,7 @@ export default function ArticleGrid({ articles = [] }) {
                                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
                                         <Image
                                             src={article.image}
-                                            alt={article.title}
+                                            alt={article.title || 'Article Image'}
                                             fill
                                             unoptimized={true}
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

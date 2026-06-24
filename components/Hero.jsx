@@ -9,7 +9,7 @@ function HeroGraphic({ accent }) {
         <div className="w-full h-full flex items-center justify-center relative select-none pointer-events-none">
             {/* Center soft glow */}
             <div 
-                className="absolute w-[300px] md:w-[450px] h-[300px] md:h-[450px] rounded-full blur-[80px] opacity-40 transition-all duration-700"
+                className="absolute w-[300px] md:w-[450px] h-[300px] md:h-[450px] rounded-full  opacity-40 transition-all duration-700"
                 style={{
                     background: `radial-gradient(circle, ${accent} 0%, transparent 70%)`
                 }}
@@ -270,10 +270,10 @@ export default function Hero() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
-                    className={`absolute top-[-10%] right-[-10%] w-[250px] md:w-[600px] h-[250px] md:h-[600px] ${slide.glowColor} blur-[120px] md:blur-[160px] rounded-full pointer-events-none z-[-1] opacity-30 md:opacity-100`}
+                    className={`absolute top-[-10%] right-[-10%] w-[250px] md:w-[600px] h-[250px] md:h-[600px] ${slide.glowColor} rounded-full pointer-events-none z-[-1] opacity-30 md:opacity-100`}
                 />
             </AnimatePresence>
-            <div className="absolute bottom-[-5%] left-[-5%] w-[180px] md:w-[400px] h-[180px] md:h-[400px] bg-blue-500/20 dark:bg-blue-900/20 blur-[120px] md:blur-[140px] rounded-full pointer-events-none z-[-1] opacity-20 md:opacity-100" />
+            <div className="absolute bottom-[-5%] left-[-5%] w-[180px] md:w-[400px] h-[180px] md:h-[400px] bg-blue-500/20 dark:bg-blue-900/20 rounded-full pointer-events-none z-[-1] opacity-20 md:opacity-100" />
 
             {/* ── 3-D Canvas ── */}
             {isDesktop && (

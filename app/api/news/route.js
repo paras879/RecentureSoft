@@ -69,8 +69,8 @@ export async function GET(request) {
 
         // Map UI categories to NewsData search terms under technology category
         const categoryMap = {
-            all: "",
-            technology: "",
+            all: '"information technology" OR software OR developer OR cybersecurity OR ai',
+            technology: '"information technology" OR software OR developer OR programming',
             ai: 'ai OR "artificial intelligence" OR "machine learning"',
             cybersecurity: 'cybersecurity OR "data security" OR "cyber attack"',
             cloud: '"cloud computing" OR aws OR azure',

@@ -39,7 +39,7 @@ export default function FeaturedArticle({ article }) {
                         <div className="absolute inset-0 z-0 h-full w-full overflow-hidden">
                             <Image 
                                 src={article.image} 
-                                alt={article.title} 
+                                alt={article.title || 'Featured Article'} 
                                 fill
                                 priority
                                 unoptimized={true}
@@ -65,7 +65,7 @@ export default function FeaturedArticle({ article }) {
                                     <div className="w-12 h-12 rounded-full bg-white/20 overflow-hidden">
                                         <Image 
                                             src="https://randomuser.me/api/portraits/men/68.jpg" 
-                                            alt={article.author} 
+                                            alt={article.author || 'Author'} 
                                             width={48}
                                             height={48}
                                             className="w-full h-full object-cover" 

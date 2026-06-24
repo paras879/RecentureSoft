@@ -70,7 +70,7 @@ export default async function BlogDetail({
 
                                                 <Image
                                                     src={item.image}
-                                                    alt={item.title}
+                                                    alt={item.title || 'Article'}
                                                     width={300}
                                                     height={180}
                                                     unoptimized={true}
@@ -104,7 +104,7 @@ export default async function BlogDetail({
                             <div className="relative mb-8">
                                 <Image
                                     src={blog.image}
-                                    alt={blog.title}
+                                    alt={blog.title || 'Blog Image'}
                                     width={1400}
                                     height={600}
                                     priority

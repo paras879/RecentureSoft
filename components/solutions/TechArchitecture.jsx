@@ -189,8 +189,8 @@ export default function TechArchitecture() {
 
             <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
-                {/* Left Side: Content & Technology Cards (lg:w-[50%]) */}
-                <div className="w-full lg:w-[52%] text-center lg:text-left">
+                {/* Left Side: Content & Technology Cards */}
+                <div className="w-full lg:w-[60%] text-center lg:text-left">
                     <span className="text-indigo-600 dark:text-indigo-400 font-mono text-xs uppercase tracking-widest font-bold">System Topology</span>
                     <h2 className="text-[1.8rem] md:text-[2.5rem] lg:text-[3rem] font-[600] tracking-[-0.03em] text-foreground mt-3 mb-4 leading-[1.05]">
                         Technology <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">Ecosystem</span>
@@ -199,29 +199,28 @@ export default function TechArchitecture() {
                         Our platform architecture leverages best-in-class technologies connected through highly optimized, secure data routes. Check out the layers powering our workflow.
                     </p>
 
-                    {/* Grid of Technology Cards (Visible on Desktop >= 1024px only) */}
-                    <div className="hidden lg:grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-8 lg:mt-10">
+                    <div className="hidden lg:grid grid-cols-2 xl:grid-cols-3 gap-5 mt-8 lg:mt-12">
                         {architectureNodes.map((node) => {
                             return (
                                 <motion.div
                                     key={node.id}
                                     whileHover={{ y: -5, boxShadow: "0 12px 24px -10px rgba(99,102,241,0.15)" }}
-                                    className="p-4.5 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/[0.06] backdrop-blur-md text-left transition-all duration-300 flex flex-col gap-2.5 hover:border-indigo-400/50 hover:bg-white dark:hover:bg-slate-900/80 group"
+                                    className="p-5 lg:p-6 rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/[0.06] backdrop-blur-md text-left transition-all duration-300 flex flex-col gap-3.5 hover:border-indigo-400/50 hover:bg-white dark:hover:bg-slate-900/80 group"
                                 >
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-white/5 flex items-center justify-center text-lg shadow-sm group-hover:scale-105 transition-transform duration-300">
+                                    <div className="flex items-center gap-3.5">
+                                        <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-white/5 flex items-center justify-center text-2xl shadow-sm group-hover:scale-105 transition-transform duration-300 shrink-0">
                                             {node.icon}
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-xs lg:text-sm text-slate-900 dark:text-white leading-tight">
+                                            <h4 className="font-bold text-sm lg:text-[1.05rem] text-slate-900 dark:text-white leading-tight">
                                                 {node.label}
                                             </h4>
-                                            <span className="text-[9px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+                                            <span className="text-[10px] lg:text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide mt-1 block">
                                                 {node.shortTech}
                                             </span>
                                         </div>
                                     </div>
-                                    <p className="text-[11px] text-slate-500 dark:text-gray-400 leading-relaxed">
+                                    <p className="text-xs lg:text-[14px] text-slate-600 dark:text-gray-300 leading-relaxed mt-1">
                                         {node.desc}
                                     </p>
                                 </motion.div>
@@ -231,7 +230,7 @@ export default function TechArchitecture() {
                 </div>
 
                 {/* Right Side: Interactive Circular Diagram (Desktop >= 1024px) */}
-                <div className="hidden lg:block relative w-[48%] h-[550px] flex-shrink-0">
+                <div className="hidden lg:block relative lg:w-[40%] h-[550px] flex-shrink-0">
 
                     {/* Concentric Architecture Rings */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-slate-200 dark:border-white/[0.03] rounded-full pointer-events-none" style={{ width: radius * 2, height: radius * 2 }} />
@@ -360,20 +359,20 @@ export default function TechArchitecture() {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mt-2">
                             {architectureNodes.map((node) => (
-                                <div key={node.id} className="relative w-full p-4 md:p-5 h-full rounded-xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/[0.06] flex items-start gap-4 backdrop-blur-md transition-all duration-300 hover:shadow-lg dark:hover:border-indigo-500/30 group">
+                                <div key={node.id} className="relative w-full p-5 md:p-6 h-full rounded-2xl bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-white/[0.06] flex items-start gap-4 backdrop-blur-md transition-all duration-300 hover:shadow-lg dark:hover:border-indigo-500/30 group">
                                     <div className="md:hidden absolute -left-[15px] top-[32px] w-[15px] h-[2px] bg-gradient-to-r from-indigo-500/20 to-transparent" />
-                                    <div className="w-9 h-9 md:w-11 md:h-11 rounded-lg flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-lg md:text-xl shadow-sm group-hover:scale-110 transition-transform">
+                                    <div className="w-11 h-11 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-2xl md:text-3xl shadow-sm group-hover:scale-110 transition-transform">
                                         {node.icon}
                                     </div>
-                                    <div className="flex flex-col gap-1 w-full text-left">
+                                    <div className="flex flex-col gap-1.5 w-full text-left">
                                         <div className="flex items-center justify-between gap-2">
-                                            <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white tracking-tight">{node.label}</h4>
-                                            <span className="px-1.5 py-0.5 rounded text-[8.5px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/35 uppercase tracking-wide">
+                                            <h4 className="text-[15px] sm:text-base font-bold text-slate-900 dark:text-white tracking-tight">{node.label}</h4>
+                                            <span className="px-2 py-1 rounded-md text-[9px] font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/35 uppercase tracking-wide">
                                                 {node.status}
                                             </span>
                                         </div>
-                                        <p className="text-[10px] text-indigo-600 dark:text-indigo-400 font-semibold leading-none">{node.tech}</p>
-                                        <p className="text-[11px] text-slate-500 dark:text-gray-400 leading-relaxed mt-1 line-clamp-2 md:line-clamp-1">
+                                        <p className="text-xs text-indigo-600 dark:text-indigo-400 font-bold leading-none">{node.tech}</p>
+                                        <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mt-1 line-clamp-3 md:line-clamp-2">
                                             {node.desc}
                                         </p>
                                     </div>

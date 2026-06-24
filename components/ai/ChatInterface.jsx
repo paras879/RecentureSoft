@@ -382,24 +382,24 @@ export default function ChatInterface({ onClose, isMinimized }) {
                 <div className="flex-1 overflow-y-auto relative scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10 scrollbar-track-transparent">
                     {isLoaded && messages.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-full min-h-[400px] px-6 py-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 p-[1px] mb-6 shadow-[0_0_30px_rgba(8,145,178,0.3)]">
+                            <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 p-[1px] mb-3 md:mb-6 shadow-[0_0_30px_rgba(8,145,178,0.3)]">
                                 <div className="w-full h-full bg-white dark:bg-[#0b1120] rounded-full flex items-center justify-center">
-                                    <svg className="w-8 h-8 text-cyan-500 dark:text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <svg className="w-5 h-5 md:w-8 md:h-8 text-cyan-500 dark:text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
                                         <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
                                         <line x1="12" x2="12" y1="19" y2="22" />
                                     </svg>
                                 </div>
                             </div>
-                            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-500 mb-2 text-center">AI Assistant</h2>
-                            <p className="text-sm font-medium text-slate-500 dark:text-slate-400 text-center mb-8">Ask anything about this platform</p>
+                            <h2 className="text-lg md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-500 mb-0.5 md:mb-2 text-center">AI Assistant</h2>
+                            <p className="text-[11px] md:text-sm font-medium text-slate-500 dark:text-slate-400 text-center mb-3 md:mb-8">Ask anything about this platform</p>
 
-                            <div className="flex flex-wrap justify-center gap-2 md:gap-3 max-w-[95%]">
+                            <div className="flex flex-wrap justify-center gap-1 md:gap-3 max-w-[100%] px-1 md:px-0">
                                 {WELCOME_SUGGESTIONS.map((s, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => handleSuggestionClick(s)}
-                                        className="flex items-center gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-xl bg-white dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-700/60 border border-slate-200 dark:border-slate-700/50 hover:border-cyan-500/50 hover:shadow-md text-[13px] md:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                                        className="flex items-center gap-1 md:gap-2 px-2 py-1 md:px-4 md:py-2.5 rounded-xl bg-white dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-700/60 border border-slate-200 dark:border-slate-700/50 hover:border-cyan-500/50 hover:shadow-md text-[10px] md:text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-white transition-all transform hover:-translate-y-0.5 active:translate-y-0"
                                     >
                                         <span className="text-base">{s.icon}</span>
                                         <span>{s.label}</span>
@@ -448,17 +448,17 @@ export default function ChatInterface({ onClose, isMinimized }) {
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
                                 placeholder="Ask anything... (Shift+Enter for new line)"
-                                className="flex-1 bg-transparent text-slate-800 dark:text-gray-100 text-[14px] md:text-[15px] px-4 py-3 md:px-5 md:py-4 resize-none focus:outline-none max-h-32 min-h-[50px] md:min-h-[56px] scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10"
+                                className="flex-1 bg-transparent text-slate-800 dark:text-gray-100 text-[12px] md:text-[15px] px-3 py-2.5 md:px-5 md:py-4 resize-none focus:outline-none max-h-32 min-h-[44px] md:min-h-[56px] scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-white/10"
                                 rows={1}
                                 aria-label="Chat input"
                             />
 
-                            <div className="flex items-center px-2 py-2 shrink-0 h-[50px] md:h-[56px] self-end">
+                            <div className="flex items-center px-1.5 py-1.5 shrink-0 h-[44px] md:h-[56px] self-end">
                                 <button
                                     type="submit"
                                     disabled={!input.trim() || isStreaming}
                                     aria-label="Send message"
-                                    className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white disabled:opacity-50 disabled:from-slate-400 disabled:to-slate-500 dark:disabled:from-slate-700 dark:disabled:to-slate-800 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-cyan-500/30 transition-all shadow-md group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 dark:focus:ring-offset-[#0f172a]"
+                                    className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white disabled:opacity-50 disabled:from-slate-400 disabled:to-slate-500 dark:disabled:from-slate-700 dark:disabled:to-slate-800 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-cyan-500/30 transition-all shadow-md group relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 dark:focus:ring-offset-[#0f172a]"
                                 >
                                     {isStreaming ? (
                                         <svg className="animate-spin w-4 h-4 md:w-5 md:h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

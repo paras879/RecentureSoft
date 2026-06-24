@@ -129,14 +129,13 @@ export default function RecentureAI() {
                             opacity: 1,
                             y: 0,
                             scale: 1,
-                            height: windowWidth < 768 ? "85vh" : isMinimized ? "auto" : "min(720px, 85vh)",
-                            width: windowWidth < 768 ? "100vw" : isMinimized ? "300px" : windowWidth < 1024 ? "400px" : "450px"
+                            height: windowWidth < 768 ? "60vh" : isMinimized ? "auto" : "min(720px, 85vh)",
+                            width: windowWidth < 768 ? "75vw" : isMinimized ? "300px" : windowWidth < 1024 ? "400px" : "450px"
                         }}
                         exit={{ opacity: 0, y: 50, scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className={`mb-0 md:mb-4 bg-white/95 dark:bg-[#0b1120]/95 backdrop-blur-3xl border border-slate-200 dark:border-white/10 shadow-[0_20px_50px_rgba(8,_145,_178,_0.1)] overflow-hidden flex flex-col origin-bottom md:origin-bottom-right pointer-events-auto transition-all ${
-                            windowWidth < 768 ? 'rounded-t-3xl rounded-b-none border-b-0 w-full' : 'rounded-3xl'
-                        }`}
+                        className={`mb-0 md:mb-4 bg-white/95 dark:bg-[#0b1120]/95 backdrop-blur-3xl border border-slate-200 dark:border-white/10 shadow-[0_20px_50px_rgba(8,_145,_178,_0.1)] overflow-hidden flex flex-col origin-bottom md:origin-bottom-right pointer-events-auto transition-all ${windowWidth < 768 ? 'rounded-3xl mb-4 mr-4 w-[75vw]' : 'rounded-3xl'
+                            }`}
                     >
                         <ChatInterface
                             onClose={() => setIsOpen(false)}
@@ -175,9 +174,9 @@ export default function RecentureAI() {
                             </svg>
                         ) : (
                             <svg className="w-6 h-6 text-cyan-400 group-hover:scale-105 transition-transform drop-shadow-[0_0_8px_rgba(8,145,178,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                                <line x1="12" x2="12" y1="19" y2="22"/>
+                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                                <line x1="12" x2="12" y1="19" y2="22" />
                             </svg>
                         )}
                     </div>
