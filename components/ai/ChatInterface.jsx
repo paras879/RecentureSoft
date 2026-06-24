@@ -245,7 +245,8 @@ export default function ChatInterface({ onClose, isMinimized }) {
 
         setIsStreaming(true);
         const newMessages = [...messages, userMsg];
-        setMessages(prev => [...prev, { role: "assistant", content: "" }]);
+        // We DO NOT append an empty assistant message here. 
+        // This ensures the last message is still 'user', so the 'Typing...' animation shows.
 
         try {
             console.log("API request started");
@@ -292,7 +293,13 @@ export default function ChatInterface({ onClose, isMinimized }) {
 
                     setMessages(prev => {
                         const latest = [...prev];
-                        latest[latest.length - 1] = { ...latest[latest.length - 1], content: aiText };
+                        if (latest.length > 0 && latest[latest.length - 1].role === "user") {
+                            // First chunk: add the assistant message
+                            latest.push({ role: "assistant", content: aiText });
+                        } else {
+                            // Subsequent chunks: update the assistant message
+                            latest[latest.length - 1] = { ...latest[latest.length - 1], content: aiText };
+                        }
                         return latest;
                     });
                 }

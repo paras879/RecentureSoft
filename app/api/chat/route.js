@@ -130,24 +130,15 @@ export async function POST(req) {
         }
 
         const currentMessage = messages[messages.length - 1].content;
-        
+
         // Logging: Incoming message
         console.log(`[Incoming Message] SessionId: ${sessionId}, Content: "${currentMessage.substring(0, 100)}${currentMessage.length > 100 ? '...' : ''}"`);
 
-        // Check/connect database for Session creation verification
-        await connectDB();
-        const existingChat = await Chat.findOne({ sessionId });
-        const isNewSession = !existingChat;
-        if (isNewSession) {
-            // Logging: Session creation
-            console.log(`[Session Creation] Session creation: New session detected on server: ${sessionId}`);
-        } else {
-            console.log(`[Session] Reusing existing session on server: ${sessionId}`);
-        }
+        // Removed blocking DB calls here to speed up Gemini response
 
-        // Initialize the model with the latest stable model: gemini-3.5-flash
+        // Initialize the model with a lightweight model to bypass heavy traffic
         const model = genAI.getGenerativeModel({
-            model: "gemini-3.5-flash",
+            model: "gemini-2.5-flash-lite",
             systemInstruction: {
                 parts: [{ text: SYSTEM_PROMPT }],
                 role: "model"
@@ -191,7 +182,7 @@ export async function POST(req) {
                 break;
             } catch (error) {
                 attempt++;
-                
+
                 // Inspect status code or message text to identify 503 errors or overload conditions
                 const status = error.status || (error.message && error.message.includes("503") ? 503 : null);
                 const is503 = status === 503 || (error.message && (
@@ -234,13 +225,20 @@ export async function POST(req) {
 
                     // Save User + Assistant Messages and update analytics post-stream
                     try {
+                        // Connect to DB and fetch existing chat in background now that stream is done
+                        await connectDB();
+                        const existingChat = await Chat.findOne({ sessionId });
+                        if (!existingChat) {
+                            console.log(`[Session Creation] New session detected post-stream: ${sessionId}`);
+                        }
+
                         const finalMessages = [...messages, { role: "assistant", content: fullResponseText }];
-                        
+
                         // Lead scoring logic
                         const keywords = ["website", "app", "software", "ai", "crm", "ecommerce", "seo", "marketing"];
                         const checkText = `${currentMessage} ${messages.map(m => m.content).join(" ")}`.toLowerCase();
                         const hasKeywords = keywords.some(kw => checkText.includes(kw));
-                        
+
                         let leadStatus = "cold";
                         if (existingChat && existingChat.leadStatus === "hot") {
                             leadStatus = "hot";
@@ -293,7 +291,7 @@ export async function POST(req) {
 
     } catch (error) {
         console.error("Gemini API Handler Catch-All Error:", error);
-        
+
         // Inspect error to check if it was a 503 error
         const status = error.status || (error.message && error.message.includes("503") ? 503 : 500);
         const is503 = status === 503 || (error.message && (
@@ -305,8 +303,8 @@ export async function POST(req) {
         ));
 
         if (is503) {
-            return new Response(JSON.stringify({ 
-                error: "Our AI assistant is currently experiencing high demand. Please try again in a few moments." 
+            return new Response(JSON.stringify({
+                error: "Our AI assistant is currently experiencing high demand. Please try again in a few moments."
             }), {
                 status: 503,
                 headers: { "Content-Type": "application/json" }
